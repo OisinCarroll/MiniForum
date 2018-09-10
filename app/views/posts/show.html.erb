@@ -10,4 +10,14 @@
   <%= @post.content %>
 </p>
 
+<p>
+	
+	<strong>Comments:</strong>
+	<%= @post.comments.count %> <strong>Comments</strong>
+	<%= render @post.comments %>
+
+	<h3>Leave a Reply</h3>
+
+</p>
+
 <%= link_to 'Back', posts_path %>
