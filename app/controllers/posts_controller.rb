@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
 
 	def index
-		@posts = Post.all.order("created_at DESC")
+		@posts = Post.all.order("created_at DESC").includes(:comments)
 	end
 
 	def new
 		@post = Post.new
+		@comment = Comment.new(post_id: params[:post_id])
 	end
 
 	def create
@@ -19,6 +20,7 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find(params[:id])
+		@posts = Post.all.includes(:comments)
 	end
 
 	def update
